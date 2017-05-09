@@ -1,0 +1,78 @@
+﻿<Controls:MetroWindow x:Name="metroWindow" x:Class="Akorcum.MainWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        EnableDWMDropShadow="True"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Akor Land" Height="700" Width="450" WindowStartupLocation="CenterScreen" Loaded="metroWindow_Loaded" MinWidth="550" MinHeight="450" ShowIconOnTitleBar="True">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="sifirlaBtn" Click="sifirlaBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Sıfırla" FontSize="14" FontWeight="Bold" FontStretch="UltraCondensed" SnapsToDevicePixels="True" Cursor="Hand" />
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="by hcakkuzu" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+
+    <TabControl x:Name="tabControl" Margin="5,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TabItem x:Name="tabItem" Header="Sanatçılar">
+            <ScrollViewer x:Name="scrollViewer1">
+                <Grid Height="{Binding ActualHeight-50, ElementName=metroWindow, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=scrollViewer1, Mode=OneWay}">
+                    <WrapPanel x:Name="sanatciGrid" Margin="0,20,0,0" >
+
+                    </WrapPanel>
+                </Grid>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="Şarkılar">
+            <ScrollViewer x:Name="scrollViewer2">
+                <Grid Height="{Binding ActualHeight-50, ElementName=metroWindow, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=scrollViewer2, Mode=OneWay}">
+                    <StackPanel Grid.Row="1" x:Name="sarkiGrid" Margin="25,20,25,0" Grid.RowSpan="2">
+
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="Akor">
+            <ScrollViewer x:Name="scrollViewer3">
+                <Grid Height="{Binding ActualHeight-50, ElementName=metroWindow, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=scrollViewer3, Mode=OneWay}">
+                    <StackPanel x:Name="akorGrid" Margin="15">
+                        <Slider x:Name="fontSizeSlide"  Maximum="55" Minimum="16" Value="16" Cursor="Hand" Margin="100,5" FontSize="11" />
+                        <GroupBox x:Name="akorBaslik" Header="Bir Şarkı Seçin" Margin="50,5" Opacity="0.9" BorderThickness="0,1" BorderBrush="#CCB5D2DE" Background="#CC98BCCB" TextOptions.TextFormattingMode="Display">
+                            <TextBox x:Name="AKOR" Text="Akorları Burada Gözüksün" FontSize="{Binding Value, ElementName=fontSizeSlide}" IsReadOnly="True" MinLines="10" FontFamily="Georgia"/>
+                        </GroupBox>
+                        <Button x:Name="silBtn" Content="Bu Akoru Sil!" HorizontalAlignment="Center" VerticalAlignment="Center" Click="silBtn_Click"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="Yeni" FontFamily="Segoe WP SemiLight" FontSize="6">
+            <ScrollViewer x:Name="scrollViewer4">
+                <Grid  x:Name="grid" Height="{Binding ActualHeight-50, ElementName=metroWindow, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=scrollViewer4, Mode=OneWay}" >
+                    <StackPanel x:Name="yeniGrid" Margin="15,20,25,0">
+                        <Label Content="Şarkı İsmi:" FontSize="16" Margin="0,5,0,0" />
+                        <TextBox x:Name="sarkiTxt" Text="" FontSize="16" VerticalAlignment="Center" Grid.Column="1" Margin="0,5,0,0"/>
+                        <Label Content="Sanatçı İsmi:" FontSize="16" Grid.Row="1" Margin="0,5,0,0" />
+                        <ComboBox x:Name="sanatciCombo" FontSize="16" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" IsEditable="True" />
+                        <Label Content="Akor:" FontSize="16" Grid.Row="2" Margin="0,5,0,0" />
+                        <TextBox x:Name="akorTxt" MinHeight="200" MinWidth="400" Text="" FontSize="16" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" AutoWordSelection="True" AcceptsTab="True" FontWeight="SemiBold" />
+                        <Button x:Name="ekleBtn" Content="Ekle!" FontSize="18" Grid.Row="3" Grid.ColumnSpan="2" Padding="10" Grid.IsSharedSizeScope="True" HorizontalAlignment="Center" Margin="0,5,0,0" Click="ekleBtn_Click"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
+
+
+</Controls:MetroWindow>
